@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_nameRepo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="APP name repo"/>
+
+    <TextView
+        android:id="@+id/tv_descriptionRepo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="APP Description"
+        />
+
+    <TextView
+        android:id="@+id/tv_nameAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="APP Name Author"
+        />
+
+    <TextView
+        android:id="@+id/tv_numberStar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="123"
+        />
+
+    <TextView
+        android:id="@+id/tv_numberFork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="333"
+        />
+
+
+</LinearLayout>

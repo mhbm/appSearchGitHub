@@ -1,5 +1,8 @@
 package com.example.android.appsearchgithub.adapter;
 
+import android.content.Context;
+import android.database.Cursor;
+
 import com.example.android.appsearchgithub.data.RepoModel;
 
 /**
@@ -10,12 +13,18 @@ public class RepoAdapter {
 
     private final RepoAdapterOnClickHandler mClickHandler;
 
+    private RepoModel[] mRepoList;
+    private Context mContext;
+
+    private Cursor mCursor;
+
+    public RepoAdapter(RepoAdapterOnClickHandler clickHandler) {
+        mClickHandler = clickHandler;
+    }
 
     public interface RepoAdapterOnClickHandler {
         void onClick(RepoModel movie);
     }
 
-    public RepoAdapter(RepoAdapterOnClickHandler clickHandler) {
-        mClickHandler = clickHandler;
-    }
+
 }
