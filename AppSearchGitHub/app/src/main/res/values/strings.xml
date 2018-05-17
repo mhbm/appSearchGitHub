@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppSearchGitHub</string>
+    <string name="error_internet">This option needs Internet. Please, verify if you connect with Internet!</string>
 </resources>
