@@ -26,5 +26,10 @@ public class RepoAdapter {
         void onClick(RepoModel movie);
     }
 
+//    public class RepoAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+//
+//
+//    }
+
 
 }

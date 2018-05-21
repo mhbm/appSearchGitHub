@@ -10,6 +10,15 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.android.appsearchgithub.adapter.RepoAdapter;
+import com.example.android.appsearchgithub.data.RepoModel;
+import com.example.android.appsearchgithub.utilities.NetworkUtils;
+import com.example.android.appsearchgithub.utilities.OpenGithubJsonUtils;
+
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         new FetchRepoTask().execute();
     }
 
-    private class FetchRepoTask extends AsyncTask<String, Void, String[]> {
+    private class FetchRepoTask extends AsyncTask<String, Void, RepoModel[]> {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
@@ -57,14 +66,37 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String[] doInBackground(String... strings) {
+        protected RepoModel[] doInBackground(String... strings) {
 
-            return new String[0];
+            try {
+                URL githubRequestURL = NetworkUtils.buildUrl();
+
+                String jsonGithubResponse = NetworkUtils.getResponseFromHttpUrl(githubRequestURL);
+
+                RepoModel[] repoModelData = OpenGithubJsonUtils.getRepoFromJson(jsonGithubResponse);
+
+                return repoModelData;
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            return null;
         }
 
         @Override
-        protected void onPostExecute(String[] strings) {
-            super.onPostExecute(strings);
+        protected void onPostExecute(RepoModel[] repoModelData) {
+            mLoadingIndicator.setVisibility(View.INVISIBLE);
+
+            if (repoModelData != null) {
+                mErrorMessageDisplay.setVisibility(View.INVISIBLE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+            }
+
         }
     }
 }
